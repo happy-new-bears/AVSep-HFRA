@@ -85,9 +85,9 @@ dataset/audio/cello/vid_0101.wav,dataset/frames/cello/000101,298
 
 We provide an automatic precompute script that  encodes extracted frames with CLIP, and saves the results into a single HDF5 file. 
 
-* **Script:** `utils_func/MUSIC21_video_precompute.py`
-* **Backbone:** **CLIP ViT-B/32** (configurable)
-* **Sampling:** **1 feature every 8 frames** (configurable)
+* Script: `utils_func/MUSIC21_video_precompute.py`
+* Backbone: CLIP ViT-B/32 (configurable)
+* Sampling: 1 feature every 8 frames (configurable)
 
 Precomputing features significantly reduces training time and memory overhead.
 
