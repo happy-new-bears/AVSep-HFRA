@@ -151,7 +151,7 @@ class CondUNetBlock(nn.Module):
     def forward(self, x, cond):
         if self.outermost:
             x_ = self.downconv(x)
-            x_ = self.submodule(x_, cond) # 我觉得最外层不用submodule呀 我试试看这样直接跑呢？，这一行是我后来注释掉的。
+            x_ = self.submodule(x_, cond) 
             x_ = self.upconv(self.upsample(self.uprelu(x_)))
 
         elif self.innermost:
@@ -170,7 +170,7 @@ class CondUNetBlock(nn.Module):
 
         else:
             x_ = self.downnorm(self.downconv(self.downrelu(x)))
-            x_ = self.submodule(x_, cond)  #这里也不用呀，就最内层需要呀，这一行是我后来注释掉的。
+            x_ = self.submodule(x_, cond)  
             x_ = self.upnorm(self.upconv(self.upsample(self.uprelu(x_))))
 
         if self.outermost or self.noskip:
@@ -238,14 +238,11 @@ class CondUNet(nn.Module):
     #return F.mse_loss(student_output, teacher_output)
 
 def distillation_loss(student_output, teacher_output):
-    # 归一化每个样本的特征
     student_norm = F.normalize(student_output, p=2, dim=-1)  # [batch_size, feature_dim]
     teacher_norm = F.normalize(teacher_output, p=2, dim=-1)  # [batch_size, feature_dim]
 
-    # 计算每个样本的余弦相似度
     cosine_similarity = torch.sum(student_norm * teacher_norm, dim=-1)  # [batch_size]
 
-    # 计算 batch 平均的余弦损失
     loss = 1 - cosine_similarity.mean()  
 
     return loss
@@ -350,9 +347,9 @@ class CLIPSep_ML(torch.nn.Module):
             
             pred_masks = [
             self.synth_net(feat_frames_late[n], feat_sound) for n in range(N)
-        ] # 这里是后处理
+        ] 
             #pred_masks.append(feat_sound)
-        student_clap_emb = outputs['downconv_output']# 提取特征！！！！！！
+        student_clap_emb = outputs['downconv_output']
         student_clap_emb = student_clap_emb.mean(dim=(2, 3))
         audio_mix_rep = audio_mix_rep.squeeze(1)
         loss_dist = distillation_loss(student_clap_emb, audio_mix_rep)

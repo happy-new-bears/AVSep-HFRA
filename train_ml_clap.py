@@ -87,9 +87,8 @@ class Args:
 
         # Training parameters
         self.steps = 200000
-        self.valid_steps = 10000 # 每隔多少步执行一次验证
-        ##### ！！！！！！！！！！！！！lr need to be checked!!!!!!
-        self.lr = 0.001 # 原本是0.001的 我调整成了0.01看看效果
+        self.valid_steps = 10000 # 
+        self.lr = 0.001 
         self.lr_warmup_steps = 5000
         self.lr_decay_steps = 100000
         self.lr_decay_multiplier = 0.1
@@ -207,9 +206,6 @@ train_loader = torch.utils.data.DataLoader(
         batch_size=args.batch_size,
         shuffle=True,
         num_workers=args.workers,
-        #num_workers=0,
-        #drop_last=True,
-        #pin_memory=False,
     )
 val_dataset = dataset.MixDataset_general(
         args.val_list,
@@ -237,8 +233,7 @@ val_loader = torch.utils.data.DataLoader(
         batch_size=args.batch_size,
         shuffle=False,
         num_workers=args.workers,
-        drop_last=False, # if false, the code will raise error, but it should be 
-        #pin_memory=False,
+        drop_last=False, 
     )
 
 
