@@ -137,9 +137,9 @@ val_dataset   = dataset.MixDataset_general(..., audio_embeding=False)
 
 ## Checkpoints
 
-You can download our pretrained checkpoint here:
+You can download our pretrained checkpoint for music dataset here:
 
-- [model_131.pt](https://drive.google.com/file/d/1MiyCQemM52eoZTvWziFlJpwopHKnWw7R/view?usp=share_link)
+- [model_music.pt](https://drive.google.com/file/d/1MiyCQemM52eoZTvWziFlJpwopHKnWw7R/view?usp=share_link)
 
 
 ## Contact
