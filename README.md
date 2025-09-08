@@ -136,7 +136,11 @@ val_dataset   = dataset.MixDataset_general(..., audio_embeding=False)
 
 
 ## Checkpoints
-Coming soon
+
+You can download our pretrained checkpoint here:
+
+- [model_131.pt](https://drive.google.com/file/d/1MiyCQemM52eoZTvWziFlJpwopHKnWw7R/view?usp=share_link)
+
 
 ## Contact
 If you have a question, please bring up an issue (preferred) or send me an email [hxh347@student.bham.ac.uk](hxh347@student.bham.ac.uk).
